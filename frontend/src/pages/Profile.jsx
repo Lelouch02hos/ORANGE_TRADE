@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import AuthNavbar from '../components/AuthNavbar';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Profile = () => {
@@ -56,9 +57,9 @@ const Profile = () => {
     const fetchUserData = async (userId) => {
         try {
             const [challengesRes, transactionsRes, statsRes] = await Promise.all([
-                axios.get(`http://localhost:5000/api/user/${userId}/challenges`),
-                axios.get(`http://localhost:5000/api/user/${userId}/transactions`),
-                axios.get(`http://localhost:5000/api/user/${userId}/stats`)
+                axios.get(`${API_URL}/api/user/${userId}/challenges`),
+                axios.get(`${API_URL}/api/user/${userId}/transactions`),
+                axios.get(`${API_URL}/api/user/${userId}/stats`)
             ]);
 
             setChallenges(challengesRes.data);
@@ -323,10 +324,10 @@ const Profile = () => {
                                                     <td className="py-3 px-4">
                                                         <span
                                                             className={`px-3 py-1 text-[10px] font-jetbrains font-bold uppercase ${challenge.status === 'active'
-                                                                    ? 'bg-neon-green/20 text-neon-green'
-                                                                    : challenge.status === 'funded'
-                                                                        ? 'bg-yellow-500/20 text-yellow-500'
-                                                                        : 'bg-red-500/20 text-red-500'
+                                                                ? 'bg-neon-green/20 text-neon-green'
+                                                                : challenge.status === 'funded'
+                                                                    ? 'bg-yellow-500/20 text-yellow-500'
+                                                                    : 'bg-red-500/20 text-red-500'
                                                                 }`}
                                                         >
                                                             {challenge.status}
@@ -340,8 +341,8 @@ const Profile = () => {
                                                     </td>
                                                     <td
                                                         className={`py-3 px-4 font-jetbrains font-bold text-sm ${challenge.current_equity - challenge.start_balance >= 0
-                                                                ? 'text-neon-green'
-                                                                : 'text-red-500'
+                                                            ? 'text-neon-green'
+                                                            : 'text-red-500'
                                                             }`}
                                                     >
                                                         {challenge.current_equity - challenge.start_balance >= 0 ? '+' : ''}
@@ -391,8 +392,8 @@ const Profile = () => {
                                             <div className="flex items-center gap-4">
                                                 <div
                                                     className={`w-10 h-10 rounded-full flex items-center justify-center ${transaction.type === 'payment'
-                                                            ? 'bg-blue-500/20'
-                                                            : 'bg-neon-green/20'
+                                                        ? 'bg-blue-500/20'
+                                                        : 'bg-neon-green/20'
                                                         }`}
                                                 >
                                                     {transaction.type === 'payment' ? (
@@ -416,10 +417,10 @@ const Profile = () => {
                                                 </div>
                                                 <div
                                                     className={`text-[10px] font-jetbrains uppercase ${transaction.status === 'completed'
-                                                            ? 'text-neon-green'
-                                                            : transaction.status === 'pending'
-                                                                ? 'text-yellow-400'
-                                                                : 'text-red-400'
+                                                        ? 'text-neon-green'
+                                                        : transaction.status === 'pending'
+                                                            ? 'text-yellow-400'
+                                                            : 'text-red-400'
                                                         }`}
                                                 >
                                                     {transaction.status}
