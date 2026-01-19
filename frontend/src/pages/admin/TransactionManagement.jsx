@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 import axios from 'axios';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const TransactionManagement = () => {
@@ -38,7 +39,7 @@ const TransactionManagement = () => {
     const fetchPending = async () => {
         try {
             const response = await axios.get(
-                `${API_URL}/api/admin/transactions/pending',
+                `${API_URL}/api/admin/transactions/pending`,
                 { headers: { 'X-User-ID': user.id } }
             );
 
@@ -156,8 +157,8 @@ const TransactionManagement = () => {
                                             </td>
                                             <td className="px-6 py-4">
                                                 <span className={`px-3 py-1 rounded-full text-xs font-jetbrains font-bold ${t.status === 'approved' ? 'bg-neon-green/20 text-neon-green border border-neon-green/30' :
-                                                        t.status === 'rejected' ? 'bg-neon-red/20 text-neon-red border border-neon-red/30' :
-                                                            'bg-yellow-500/20 text-yellow-500 border border-yellow-500/30'
+                                                    t.status === 'rejected' ? 'bg-neon-red/20 text-neon-red border border-neon-red/30' :
+                                                        'bg-yellow-500/20 text-yellow-500 border border-yellow-500/30'
                                                     }`}>
                                                     {t.status.toUpperCase()}
                                                 </span>

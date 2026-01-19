@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, Lock, User } from 'lucide-react';
 import axios from 'axios';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const AdminLogin = () => {
@@ -18,7 +19,7 @@ const AdminLogin = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post(`${API_URL}/api/admin/login', formData);
+            const response = await axios.post(`${API_URL}/api/admin/login`, formData);
 
             if (response.data.success) {
                 localStorage.setItem('user', JSON.stringify(response.data.user));

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { TrendingUp, RefreshCw, Landmark } from 'lucide-react';
 import axios from 'axios';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const BVCStocks = () => {
@@ -18,7 +19,7 @@ const BVCStocks = () => {
 
     const fetchStocks = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/admin/bvc-stocks', {
+            const response = await axios.get(`${API_URL}/api/admin/bvc-stocks`, {
                 headers: { 'X-User-ID': user.id }
             });
 

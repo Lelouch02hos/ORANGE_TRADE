@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Bot, Zap, TrendingUp, Shield, BarChart3 } from 'lucide-react';
 import axios from 'axios';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const AIChat = ({ symbol }) => {
@@ -40,7 +41,7 @@ const AIChat = ({ symbol }) => {
         setIsTyping(true);
 
         try {
-            const response = await axios.post(`${API_URL}/api/ai/chat', {
+            const response = await axios.post(`${API_URL}/api/ai/chat`, {
                 message: input,
                 symbol: symbol
             });
@@ -110,8 +111,8 @@ const AIChat = ({ symbol }) => {
                             className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                         >
                             <div className={`max-w-[80%] rounded-lg p-3 ${msg.type === 'user'
-                                    ? 'bg-neon-green/20 text-white border border-neon-green/30'
-                                    : 'bg-white/5 text-gray-100 border border-white/10'
+                                ? 'bg-neon-green/20 text-white border border-neon-green/30'
+                                : 'bg-white/5 text-gray-100 border border-white/10'
                                 }`}>
                                 <div className="text-sm font-jetbrains whitespace-pre-line">{msg.content}</div>
                                 <div className="text-[10px] text-gray-500 mt-1 font-jetbrains">

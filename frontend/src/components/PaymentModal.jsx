@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
@@ -69,7 +70,7 @@ const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
         try {
             const userId = localStorage.getItem('user_id') || 1;
 
-            const response = await axios.post(`${API_URL}/api/payment/process', {
+            const response = await axios.post(`${API_URL}/api/payment/process`, {
                 user_id: userId,
                 amount: amount,
                 method: selectedMethod,
@@ -133,8 +134,8 @@ const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
                         <button
                             onClick={() => setSelectedMethod('card')}
                             className={`p-4 rounded-lg border-2 transition-all ${selectedMethod === 'card'
-                                    ? 'border-accent bg-accent/10'
-                                    : 'border-white/10 hover:border-white/30'
+                                ? 'border-accent bg-accent/10'
+                                : 'border-white/10 hover:border-white/30'
                                 }`}
                         >
                             <div className="text-3xl mb-2">💳</div>
@@ -143,8 +144,8 @@ const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
                         <button
                             onClick={() => setSelectedMethod('paypal')}
                             className={`p-4 rounded-lg border-2 transition-all ${selectedMethod === 'paypal'
-                                    ? 'border-accent bg-accent/10'
-                                    : 'border-white/10 hover:border-white/30'
+                                ? 'border-accent bg-accent/10'
+                                : 'border-white/10 hover:border-white/30'
                                 }`}
                         >
                             <div className="text-3xl mb-2">🅿️</div>
@@ -153,8 +154,8 @@ const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
                         <button
                             onClick={() => setSelectedMethod('cmi')}
                             className={`p-4 rounded-lg border-2 transition-all ${selectedMethod === 'cmi'
-                                    ? 'border-accent bg-accent/10'
-                                    : 'border-white/10 hover:border-white/30'
+                                ? 'border-accent bg-accent/10'
+                                : 'border-white/10 hover:border-white/30'
                                 }`}
                         >
                             <div className="text-3xl mb-2">🏦</div>

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { Settings, Save, ToggleLeft, ToggleRight } from 'lucide-react';
 import axios from 'axios';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const PlatformSettings = () => {
@@ -24,7 +25,7 @@ const PlatformSettings = () => {
 
     const fetchConfig = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/admin/config', {
+            const response = await axios.get(`${API_URL}/api/admin/config`, {
                 headers: { 'X-User-ID': user.id }
             });
 
@@ -42,7 +43,7 @@ const PlatformSettings = () => {
         setSaving(true);
         try {
             const response = await axios.put(
-                `${API_URL}/api/admin/config',
+                `${API_URL}/api/admin/config`,
                 config,
                 { headers: { 'X-User-ID': user.id } }
             );

@@ -15,7 +15,8 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import AuthNavbar from '../components/AuthNavbar';
-
+
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Community = () => {
@@ -44,7 +45,7 @@ const Community = () => {
 
     const fetchDiscussions = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/community/discussions', {
+            const response = await axios.get(`${API_URL}/api/community/discussions`, {
                 params: { category: activeCategory, sort: sortBy }
             });
             if (response.data.success) {
@@ -59,7 +60,7 @@ const Community = () => {
 
     const fetchStats = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/community/stats');
+            const response = await axios.get(`${API_URL}/api/community/stats`);
             if (response.data.success) {
                 setStats(response.data.stats);
             }
@@ -84,7 +85,7 @@ const Community = () => {
         const user = JSON.parse(localStorage.getItem('user'));
 
         try {
-            const response = await axios.post(`${API_URL}/api/community/discussions', {
+            const response = await axios.post(`${API_URL}/api/community/discussions`, {
                 ...newDiscussion,
                 user_id: user.id
             });
@@ -285,8 +286,8 @@ const Community = () => {
                                         key={cat.id}
                                         onClick={() => setActiveCategory(cat.id)}
                                         className={`w-full p-3 mb-2 text-left transition-all font-jetbrains text-sm flex items-center gap-2 ${activeCategory === cat.id
-                                                ? 'bg-neon-green/20 text-neon-green border-l-2 border-neon-green'
-                                                : 'hover:bg-white/5 text-gray-400'
+                                            ? 'bg-neon-green/20 text-neon-green border-l-2 border-neon-green'
+                                            : 'hover:bg-white/5 text-gray-400'
                                             }`}
                                     >
                                         <IconComponent className="w-4 h-4" />
