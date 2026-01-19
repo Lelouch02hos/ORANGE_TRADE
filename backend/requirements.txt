@@ -2,6 +2,7 @@ Flask
 Flask-SQLAlchemy
 Flask-Cors
 Flask-RESTful
+Flask-SocketIO
 yfinance
 apscheduler
 requests
