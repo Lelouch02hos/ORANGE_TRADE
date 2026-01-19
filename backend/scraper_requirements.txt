@@ -1,0 +1,19 @@
+# Requirements pour le scraper Bourse de Casablanca
+# Installation: pip install -r scraper_requirements.txt
+
+# Scraping de base
+requests==2.31.0
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# Scraping avancé avec Selenium
+selenium==4.15.2
+
+# Export et traitement de données
+pandas==2.1.3
+
+# Gestion des erreurs et retry
+urllib3==2.1.0
+
+# Parsing HTML
+html5lib==1.1

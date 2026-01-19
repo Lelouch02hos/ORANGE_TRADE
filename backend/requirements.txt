@@ -1,0 +1,11 @@
+Flask
+Flask-SQLAlchemy
+Flask-Cors
+Flask-RESTful
+yfinance
+apscheduler
+requests
+beautifulsoup4
+psycopg2-binary
+python-dotenv
+google-generativeai
