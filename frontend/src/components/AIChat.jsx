@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Bot, Zap, TrendingUp, Shield, BarChart3 } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const AIChat = ({ symbol }) => {
     const [messages, setMessages] = useState([
@@ -38,7 +40,7 @@ const AIChat = ({ symbol }) => {
         setIsTyping(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/ai/chat', {
+            const response = await axios.post(`${API_URL}/api/ai/chat', {
                 message: input,
                 symbol: symbol
             });
@@ -183,3 +185,4 @@ const AIChat = ({ symbol }) => {
 };
 
 export default AIChat;
+

@@ -3,6 +3,8 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import StatCard from '../../components/admin/StatCard';
 import { Users, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const AdminDashboard = () => {
     const [stats, setStats] = useState(null);
@@ -16,7 +18,7 @@ const AdminDashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/admin/dashboard/stats', {
+            const response = await axios.get(`${API_URL}/api/admin/dashboard/stats', {
                 headers: { 'X-User-ID': user.id }
             });
 
@@ -150,3 +152,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

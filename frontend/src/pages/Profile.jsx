@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import AuthNavbar from '../components/AuthNavbar';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -440,3 +442,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

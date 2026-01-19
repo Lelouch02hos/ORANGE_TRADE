@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { Search, Edit, Trash2, UserX, UserCheck, Key } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]);
@@ -189,3 +191,4 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
+

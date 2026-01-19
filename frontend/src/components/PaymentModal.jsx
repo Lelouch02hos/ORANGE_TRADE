@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
     const [selectedMethod, setSelectedMethod] = useState('card');
@@ -67,7 +69,7 @@ const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
         try {
             const userId = localStorage.getItem('user_id') || 1;
 
-            const response = await axios.post('http://localhost:5000/api/payment/process', {
+            const response = await axios.post(`${API_URL}/api/payment/process', {
                 user_id: userId,
                 amount: amount,
                 method: selectedMethod,
@@ -411,3 +413,4 @@ const PaymentModal = ({ isOpen, onClose, tier, amount, balance }) => {
 };
 
 export default PaymentModal;
+

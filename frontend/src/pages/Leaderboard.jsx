@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Leaderboard = () => {
     const [leaders, setLeaders] = useState([]);
@@ -8,7 +10,7 @@ const Leaderboard = () => {
     useEffect(() => {
         const fetchLeaderboard = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/leaderboard');
+                const response = await axios.get(`${API_URL}/api/leaderboard');
                 setLeaders(response.data);
             } catch (error) {
                 console.error("Failed to fetch leaderboard", error);
@@ -78,3 +80,4 @@ const Leaderboard = () => {
 };
 
 export default Leaderboard;
+

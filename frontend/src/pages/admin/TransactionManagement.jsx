@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const TransactionManagement = () => {
     const [transactions, setTransactions] = useState([]);
@@ -36,7 +38,7 @@ const TransactionManagement = () => {
     const fetchPending = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:5000/api/admin/transactions/pending',
+                `${API_URL}/api/admin/transactions/pending',
                 { headers: { 'X-User-ID': user.id } }
             );
 
@@ -196,3 +198,4 @@ const TransactionManagement = () => {
 };
 
 export default TransactionManagement;
+

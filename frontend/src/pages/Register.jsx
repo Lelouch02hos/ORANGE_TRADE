@@ -6,6 +6,8 @@ import axios from 'axios';
 import CandlestickBackground from '../components/CandlestickBackground';
 import GlowingButton from '../components/GlowingButton';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -42,7 +44,7 @@ const Register = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/register', {
+            const response = await axios.post(`${API_URL}/api/register`, {
                 username: formData.username,
                 email: formData.email,
                 password: formData.password

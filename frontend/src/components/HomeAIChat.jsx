@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Send, X, Bot, Sparkles, Minimize2, Maximize2 } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const HomeAIChat = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +30,7 @@ const HomeAIChat = () => {
 
     const fetchSuggestions = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/gemini/suggestions');
+            const response = await axios.get(`${API_URL}/api/gemini/suggestions');
             if (response.data.success) {
                 setSuggestions(response.data.suggestions);
             }
@@ -55,7 +57,7 @@ const HomeAIChat = () => {
         setIsTyping(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/gemini/chat', {
+            const response = await axios.post(`${API_URL}/api/gemini/chat', {
                 message: messageText
             });
 
@@ -287,3 +289,4 @@ const HomeAIChat = () => {
 };
 
 export default HomeAIChat;
+

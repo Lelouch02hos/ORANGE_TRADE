@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, RefreshCw, Landmark } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const BVCStocksWidget = ({ onStockClick }) => {
     const [stocks, setStocks] = useState([]);
@@ -16,7 +18,7 @@ const BVCStocksWidget = ({ onStockClick }) => {
 
     const fetchStocks = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/bvc-stocks');
+            const response = await axios.get(`${API_URL}/api/bvc-stocks');
 
             if (response.data.success) {
                 setStocks(response.data.stocks);
@@ -124,3 +126,4 @@ const BVCStocksWidget = ({ onStockClick }) => {
 };
 
 export default BVCStocksWidget;
+

@@ -27,6 +27,8 @@ import {
 } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const MacroSentiment = () => {
     const [indicators, setIndicators] = useState([]);
@@ -51,7 +53,7 @@ const MacroSentiment = () => {
 
     const fetchMacroIndicators = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/macro/indicators');
+            const response = await axios.get(`${API_URL}/api/macro/indicators');
             if (response.data.success) {
                 setIndicators(response.data.indicators);
             }
@@ -62,7 +64,7 @@ const MacroSentiment = () => {
 
     const fetchSentimentScore = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/macro/sentiment-score');
+            const response = await axios.get(`${API_URL}/api/macro/sentiment-score');
             if (response.data.success) {
                 setSentimentScore(response.data);
             }
@@ -416,3 +418,4 @@ const MacroSentiment = () => {
 };
 
 export default MacroSentiment;
+

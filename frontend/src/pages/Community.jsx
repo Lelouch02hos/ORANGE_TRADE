@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import AuthNavbar from '../components/AuthNavbar';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Community = () => {
     const [discussions, setDiscussions] = useState([]);
@@ -42,7 +44,7 @@ const Community = () => {
 
     const fetchDiscussions = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/community/discussions', {
+            const response = await axios.get(`${API_URL}/api/community/discussions', {
                 params: { category: activeCategory, sort: sortBy }
             });
             if (response.data.success) {
@@ -57,7 +59,7 @@ const Community = () => {
 
     const fetchStats = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/community/stats');
+            const response = await axios.get(`${API_URL}/api/community/stats');
             if (response.data.success) {
                 setStats(response.data.stats);
             }
@@ -82,7 +84,7 @@ const Community = () => {
         const user = JSON.parse(localStorage.getItem('user'));
 
         try {
-            const response = await axios.post('http://localhost:5000/api/community/discussions', {
+            const response = await axios.post(`${API_URL}/api/community/discussions', {
                 ...newDiscussion,
                 user_id: user.id
             });
@@ -476,3 +478,4 @@ const Community = () => {
 };
 
 export default Community;
+

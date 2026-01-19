@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { FileText, Search } from 'lucide-react';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const AuditLogs = () => {
     const [logs, setLogs] = useState([]);
@@ -16,7 +18,7 @@ const AuditLogs = () => {
 
     const fetchLogs = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/admin/logs', {
+            const response = await axios.get(`${API_URL}/api/admin/logs', {
                 headers: { 'X-User-ID': user.id }
             });
 
@@ -140,3 +142,4 @@ const AuditLogs = () => {
 };
 
 export default AuditLogs;
+

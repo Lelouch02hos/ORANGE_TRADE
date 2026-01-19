@@ -6,6 +6,8 @@ import axios from 'axios';
 import TradingInterfaceBackground from '../components/TradingInterfaceBackground';
 import GlowingButton from '../components/GlowingButton';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -28,7 +30,7 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/login', {
+            const response = await axios.post(`${API_URL}/api/login`, {
                 username: formData.username,
                 password: formData.password
             });
